@@ -4,9 +4,11 @@ import imgs from "../assets/Group 1.png";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { Link } from "react-router-dom";
+import { Link,useMatch } from "react-router-dom";
 
 const NavBar = () => {
+  const isAbout = useMatch('/Alltask');
+  const isNew = useMatch('/Newtask');
   return (
     <>
     <div className="nav-wrapper border-bottom">
@@ -28,12 +30,17 @@ const NavBar = () => {
             ></Nav>
 
             <div className="d-flex align-items-center gap-5">
+              {!isNew && "AllTask" && (
               <Link to="/NewTask" className="text-decoration-none text-dark">
                 <h4> New Task </h4>
               </Link>
+              )}
+
+              {!isAbout && "/AllTask" && (
               <Link to="/AllTask" className="text-decoration-none text-dark">
                 <h4> All Task </h4>
               </Link>
+              )}
               <Link to="/">
                 <img src={image} alt="" />
               </Link>
